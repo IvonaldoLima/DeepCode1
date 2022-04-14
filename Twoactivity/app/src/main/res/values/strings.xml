@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Two activity</string>
+    <string name="reply_received">Reply received</string>
+    <string name="mensagem">Mensagem</string>
+</resources>
