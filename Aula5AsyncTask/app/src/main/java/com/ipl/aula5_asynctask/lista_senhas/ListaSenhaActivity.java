@@ -23,7 +23,6 @@ import com.ipl.aula5_asynctask.model.ConfiguracaoGerarSenha;
 
 public class ListaSenhaActivity extends AppCompatActivity {
 
-    public static final String ID_MENSAGEM_RECEBIDA = "mensagem_recebida";
     public static final String ID_MENSAGEM_RETORNO = "mensagem_recebida";
     private ActivityListaSenhaBinding binding;
     private ListaSenhaAdapter adapter;
