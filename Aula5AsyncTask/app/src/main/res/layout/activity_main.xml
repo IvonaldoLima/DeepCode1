@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Switch
+        android:id="@+id/switchLetraMaiscula"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Letras maiúsculas"
+        app:layout_constraintEnd_toEndOf="@+id/editTextQuantidadeDeSenhas"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="@+id/editTextQuantidadeDeSenhas"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTamanhoDaSenha" />
+
+    <EditText
+        android:id="@+id/editTextQuantidadeDeSenhas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Quantidade senha"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="229dp"
+        android:layout_height="165dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_password" />
+
+    <Switch
+        android:id="@+id/switchLetraMinuscula"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Letras minúsculas"
+        app:layout_constraintEnd_toEndOf="@+id/switchLetraMaiscula"
+        app:layout_constraintStart_toStartOf="@+id/switchLetraMaiscula"
+        app:layout_constraintTop_toBottomOf="@+id/switchLetraMaiscula" />
+
+    <Switch
+        android:id="@+id/switchNumero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Números"
+        app:layout_constraintEnd_toEndOf="@+id/switchLetraMinuscula"
+        app:layout_constraintStart_toStartOf="@+id/switchLetraMinuscula"
+        app:layout_constraintTop_toBottomOf="@+id/switchLetraMinuscula" />
+
+    <Switch
+        android:id="@+id/switchCaracterEspecial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Caracteres especiais"
+        app:layout_constraintEnd_toEndOf="@+id/switchNumero"
+        app:layout_constraintStart_toStartOf="@+id/switchNumero"
+        app:layout_constraintTop_toBottomOf="@+id/switchNumero" />
+
+    <Button
+        android:id="@+id/buttonGerarSenha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="7dp"
+        android:text="Gerar Senhas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTamanhoDaSenha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Tamanho da senha"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/editTextQuantidadeDeSenhas"
+        app:layout_constraintStart_toStartOf="@+id/editTextQuantidadeDeSenhas"
+        app:layout_constraintTop_toBottomOf="@+id/editTextQuantidadeDeSenhas" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
