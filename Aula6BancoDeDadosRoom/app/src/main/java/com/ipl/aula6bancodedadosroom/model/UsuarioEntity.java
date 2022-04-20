@@ -26,6 +26,7 @@ public class UsuarioEntity {
 
     public int getAvatarImageId() {
         return avatarImageId;
+        // TODO: 20/04/2022 Texto t do
     }
 
     public void setAvatarImageId(int avatarImageId) {
