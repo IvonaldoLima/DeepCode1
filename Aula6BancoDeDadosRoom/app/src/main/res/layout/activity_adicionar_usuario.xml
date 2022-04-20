@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".telas.AdicionarUsuarioActivity">
+
+    <EditText
+        android:id="@+id/nome_usuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar_imagem_usuario" />
+
+    <EditText
+        android:id="@+id/profissao_usuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Profissão"
+        app:layout_constraintEnd_toEndOf="@+id/nome_usuario"
+        app:layout_constraintStart_toStartOf="@+id/nome_usuario"
+        app:layout_constraintTop_toBottomOf="@+id/nome_usuario" />
+
+    <EditText
+        android:id="@+id/data_nascimento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Data nascimento"
+        android:focusable="false"
+        tools:ignore="TouchTargetSizeCheck"
+        app:layout_constraintEnd_toEndOf="@+id/profissao_usuario"
+        app:layout_constraintStart_toStartOf="@+id/profissao_usuario"
+        app:layout_constraintTop_toBottomOf="@+id/profissao_usuario" />
+
+    <Button
+        android:id="@+id/botao_salvar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Salvar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/avatar_imagem_usuario"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+</androidx.constraintlayout.widget.ConstraintLayout>
