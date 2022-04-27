@@ -2,7 +2,9 @@ package com.ipl.professorallocation.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Course{
+import java.io.Serializable;
+
+public class Course implements Serializable {
 
 	@SerializedName("name")
 	private String name;

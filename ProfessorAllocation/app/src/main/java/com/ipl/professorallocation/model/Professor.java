@@ -1,9 +1,10 @@
 package com.ipl.professorallocation.model;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Professor{
+public class Professor implements Serializable {
 
 	@SerializedName("allocations")
 	private List<AllocationsItem> allocations;

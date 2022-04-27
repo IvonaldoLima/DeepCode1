@@ -1,4 +1,4 @@
-package com.ipl.professorallocation.data;
+package com.ipl.professorallocation.data.service;
 
 import com.ipl.professorallocation.model.Professor;
 import com.ipl.professorallocation.model.ProfessorRequest;
@@ -23,4 +23,8 @@ public interface ProfessorService {
 
     @POST("/professors")
     Call<Professor> criarProfessor(@Body ProfessorRequest professorRequest);
+
+    @PUT("/professors/{id}")
+    Call<Professor> atualizarDadosDoProfessor(@Path("id") int idProfessor,
+                                               @Body ProfessorRequest professorRequest);
 }

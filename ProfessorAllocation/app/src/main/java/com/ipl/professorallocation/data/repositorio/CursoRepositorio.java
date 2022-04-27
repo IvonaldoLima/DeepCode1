@@ -1,7 +1,8 @@
-package com.ipl.professorallocation.data;
+package com.ipl.professorallocation.data.repositorio;
 
 import android.util.Log;
 
+import com.ipl.professorallocation.data.service.CursoService;
 import com.ipl.professorallocation.model.curso.Curso;
 
 import java.util.List;

@@ -1,4 +1,8 @@
-package com.ipl.professorallocation.data;
+package com.ipl.professorallocation.data.repositorio;
+
+import com.ipl.professorallocation.data.service.CursoService;
+import com.ipl.professorallocation.data.service.DepartamentoService;
+import com.ipl.professorallocation.data.service.ProfessorService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -23,7 +27,7 @@ public class RetrofitClient {
         if (retrofit == null) {
             getInstance();
         }
-       return retrofit.create(ProfessorService.class);
+        return retrofit.create(ProfessorService.class);
     }
 
     public static CursoService getCursoService() {
@@ -33,4 +37,10 @@ public class RetrofitClient {
         return retrofit.create(CursoService.class);
     }
 
+    public static DepartamentoService getDepartamentoService() {
+        if (retrofit == null) {
+            getInstance();
+        }
+        return retrofit.create(DepartamentoService.class);
+    }
 }

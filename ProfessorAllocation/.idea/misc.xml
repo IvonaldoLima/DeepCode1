@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/drawable-v24/ic_baseline_delete_forever_24.xml" value="0.1805" />
         <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3725" />
         <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/drawable/ic_allocation.xml" value="0.1655" />
         <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/drawable/ic_department.xml" value="0.1655" />
         <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/drawable/ic_education.xml" value="0.3725" />
         <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1655" />
         <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/drawable/ic_learning.xml" value="0.1655" />
+        <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/layout/activity_add_edit_professor.xml" value="0.2" />
+        <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/layout/activity_listar_professores.xml" value="0.1" />
         <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/ivonaldo/Desktop/aulas/repositorio/DeepCode1/ProfessorAllocation/app/src/main/res/layout/item_lista_professor.xml" value="0.2" />
       </map>
     </option>
   </component>

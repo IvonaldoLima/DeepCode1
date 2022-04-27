@@ -2,7 +2,9 @@ package com.ipl.professorallocation.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AllocationsItem{
+import java.io.Serializable;
+
+public class AllocationsItem implements Serializable {
 
 	@SerializedName("endHour")
 	private String endHour;

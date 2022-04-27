@@ -1,4 +1,4 @@
-package com.ipl.professorallocation.data;
+package com.ipl.professorallocation.data.service;
 
 import com.ipl.professorallocation.model.curso.Curso;
 

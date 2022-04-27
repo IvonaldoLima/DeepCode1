@@ -1,4 +1,4 @@
-package com.ipl.professorallocation.data;
+package com.ipl.professorallocation.data.service;
 
 public interface RespositorioCallBack<T> {
     void onResponse(T response);
