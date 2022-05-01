@@ -69,4 +69,20 @@ public class AlocacaoRepositorio {
             }
         });
     }
+
+    public void editarAlocacao(int allocationId, AllocationRequest allocationRequest, RespositorioCallBack<AllocationsItem> callBack) {
+        Call<AllocationsItem> call = service.atualizarDadosDaAlocacao(allocationId, allocationRequest);
+        call.enqueue(new Callback<AllocationsItem>() {
+            @Override
+            public void onResponse(Call<AllocationsItem> call, Response<AllocationsItem> response) {
+                callBack.onResponse(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<AllocationsItem> call, Throwable t) {
+                Log.d("IPL1", "onFailure: Erro ao deletar!" + t);
+                callBack.onFailure(t);
+            }
+        });
+    }
 }

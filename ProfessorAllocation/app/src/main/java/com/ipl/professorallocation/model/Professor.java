@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 public class Professor implements Serializable {
 
@@ -60,6 +61,19 @@ public class Professor implements Serializable {
 
 	public Department getDepartment(){
 		return department;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Professor professor = (Professor) o;
+		return id == professor.id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(allocations, name, cpf, id, department);
 	}
 
 	@Override

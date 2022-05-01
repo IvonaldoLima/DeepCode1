@@ -1,20 +1,19 @@
 package com.ipl.professorallocation.view.listar_alocacao_professor;
 
-import static com.ipl.professorallocation.view.add_edit_professor.AddEditProfessorActivity.EXTRA_EDITAR_PROFESSOR;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import static com.ipl.professorallocation.view.alocar_professor.AddEditAlocacaoProfessorActivity.EXTRA_EDITAR_ALOCACAO;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ipl.professorallocation.data.repositorio.AlocacaoRepositorio;
 import com.ipl.professorallocation.data.service.RespositorioCallBack;
 import com.ipl.professorallocation.databinding.ActivityListarAlocacaoBinding;
 import com.ipl.professorallocation.model.AllocationsItem;
-import com.ipl.professorallocation.view.add_edit_professor.AddEditProfessorActivity;
 import com.ipl.professorallocation.view.alocar_professor.AddEditAlocacaoProfessorActivity;
 import com.ipl.professorallocation.view.listar_alocacao_professor.adapter.ListaAlocacaoAdapter;
 
@@ -61,9 +60,9 @@ public class ListarAlocacaoActivity extends AppCompatActivity {
 
             @Override
             public void onClickEditarAlocacao(AllocationsItem editarAlocacaco) {
-                Intent intent = new Intent(ListarAlocacaoActivity.this, AddEditProfessorActivity.class);
+                Intent intent = new Intent(ListarAlocacaoActivity.this, AddEditAlocacaoProfessorActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(EXTRA_EDITAR_PROFESSOR, editarAlocacaco);
+                bundle.putSerializable(EXTRA_EDITAR_ALOCACAO, editarAlocacaco);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

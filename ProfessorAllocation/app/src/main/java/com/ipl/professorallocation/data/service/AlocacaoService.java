@@ -28,5 +28,5 @@ public interface AlocacaoService {
 
     @PUT("/allocations/{id}")
     Call<AllocationsItem> atualizarDadosDaAlocacao(@Path("id") int idAlocacao,
-                                              @Body ProfessorRequest professorRequest);
+                                              @Body AllocationRequest professorRequest);
 }

@@ -1,5 +1,6 @@
 package com.ipl.professorallocation.view.alocar_professor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,10 +20,9 @@ import com.ipl.professorallocation.data.service.RespositorioCallBack;
 import com.ipl.professorallocation.databinding.ActivityAddEditAlocacaoProfessorBinding;
 import com.ipl.professorallocation.model.AllocationRequest;
 import com.ipl.professorallocation.model.AllocationsItem;
+import com.ipl.professorallocation.model.Course;
 import com.ipl.professorallocation.model.DiasDaSemana;
 import com.ipl.professorallocation.model.Professor;
-import com.ipl.professorallocation.model.curso.Curso;
-import com.ipl.professorallocation.view.add_edit_professor.AddEditProfessorActivity;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -30,7 +30,8 @@ import java.util.List;
 public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
 
     private ActivityAddEditAlocacaoProfessorBinding binding;
-    private ArrayAdapter<Curso> cursoArrayAdapter;
+    public static final String EXTRA_EDITAR_ALOCACAO = "editar_alocacao";
+    private ArrayAdapter<Course> cursoArrayAdapter;
     private ArrayAdapter<DiasDaSemana> diasDaSemanaArrayAdapter;
     private ArrayAdapter<Professor> professorArrayAdapter;
     private CursoRepositorio cursoRepositorio;
@@ -40,12 +41,14 @@ public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
     private int campoDeHoraQueIniciouTimePick;
     private static final int HORA_INICIO = 0;
     private static final int HORA_FIM = 1;
-    private Curso cursoSelecionado;
+    private Course cursoSelecionado;
     private Professor professorSelecionado;
     private DiasDaSemana diaDaSemanaSelecionado;
 
     private LocalTime timeInicoSelecionada;
     private LocalTime timeFimSelecionado;
+
+    private AllocationsItem allocationsItemParaEditar;
 
 
     @Override
@@ -53,16 +56,35 @@ public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAddEditAlocacaoProfessorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setTitle("Adicionar Alocação");
         cursoRepositorio = new CursoRepositorio();
         professorRepositorio = new ProfessorRepositorio();
         alocacaoRepositorio = new AlocacaoRepositorio();
         setupOnClickListener();
+        carregarAlocacaoParaEditar();
         setupSpinnerListaCurso();
         setupSpinnerListaProfessor();
         setupSpinnerDiaDaSemana();
         listarCursos();
         listarProfessores();
         setupCalendarioDatePicker();
+    }
+
+    private void carregarAlocacaoParaEditar() {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            setTitle("Editar Alocação");
+            AllocationsItem allocationsItem = (AllocationsItem) bundle.getSerializable(EXTRA_EDITAR_ALOCACAO);
+            if (allocationsItem != null) {
+                allocationsItemParaEditar = allocationsItem;
+                timeInicoSelecionada = allocationsItemParaEditar.getStartHour();
+                timeFimSelecionado = allocationsItemParaEditar.getEndHour();
+                binding.horaDeInicio.setText(timeInicoSelecionada.toString());
+                binding.horaFim.setText(timeFimSelecionado.toString());
+            }
+        }
     }
 
     private void setupCalendarioDatePicker() {
@@ -91,20 +113,12 @@ public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
     private void setupOnClickListener() {
         binding.salvarAlocacao.setOnClickListener(view -> {
             mostrarProgressBar(View.VISIBLE);
-            alocacaoRepositorio.criarAlocacao(getAllocationRequest(), new RespositorioCallBack<AllocationsItem>() {
-                @Override
-                public void onResponse(AllocationsItem response) {
-                    mostrarProgressBar(View.INVISIBLE);
-                    Toast.makeText(AddEditAlocacaoProfessorActivity.this, "Alocação criado.", Toast.LENGTH_LONG).show();
-                    finish();
-                }
-
-                @Override
-                public void onFailure(Throwable t) {
-                    mostrarProgressBar(View.INVISIBLE);
-                    Log.d("IPL2", "onFailure: " + t);
-                }
-            });
+            AllocationRequest allocationRequest = getAllocationRequest();
+            if(allocationsItemParaEditar != null) {
+                editarAlocacao(allocationRequest);
+            } else  {
+                criarAlocacao(allocationRequest);
+            }
         });
         binding.horaDeInicio.setOnClickListener(v -> {
             campoDeHoraQueIniciouTimePick = HORA_INICIO;
@@ -113,6 +127,40 @@ public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
         binding.horaFim.setOnClickListener(v -> {
             campoDeHoraQueIniciouTimePick = HORA_FIM;
             timePicker.show(getSupportFragmentManager(), "TIME_PICKER");
+        });
+    }
+
+    private void editarAlocacao(AllocationRequest allocationRequest) {
+        alocacaoRepositorio.editarAlocacao(allocationsItemParaEditar.getId(), allocationRequest, new RespositorioCallBack<AllocationsItem>() {
+            @Override
+            public void onResponse(AllocationsItem response) {
+                mostrarProgressBar(View.INVISIBLE);
+                Toast.makeText(AddEditAlocacaoProfessorActivity.this, "Alocação Editada.", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                mostrarProgressBar(View.INVISIBLE);
+                Log.d("IPL1", "onFailure: " + t);
+            }
+        });
+    }
+
+    private void criarAlocacao(AllocationRequest allocationRequest) {
+        alocacaoRepositorio.criarAlocacao(allocationRequest, new RespositorioCallBack<AllocationsItem>() {
+            @Override
+            public void onResponse(AllocationsItem response) {
+                mostrarProgressBar(View.INVISIBLE);
+                Toast.makeText(AddEditAlocacaoProfessorActivity.this, "Alocação criado.", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                mostrarProgressBar(View.INVISIBLE);
+                Log.d("IPL1", "onFailure: " + t);
+            }
         });
     }
 
@@ -143,17 +191,17 @@ public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
     }
 
     private void listarCursos() {
-        cursoRepositorio.listarCursos(new RespositorioCallBack<List<Curso>>() {
+        cursoRepositorio.listarCursos(new RespositorioCallBack<List<Course>>() {
             @Override
-            public void onResponse(List<Curso> response) {
+            public void onResponse(List<Course> response) {
                 cursoArrayAdapter.addAll(response);
 
-                // Irá setar o departamento no spinner quando estiver editando um professor
-//                if (editarProfessor != null) {
-//                    departamentoSelecionado = editarProfessor.getDepartment();
-//                    int departamentoPosition = departamentoSpinner.getPosition(editarProfessor.getDepartment());
-//                    binding.spinnerCurso.setSelection(departamentoPosition, true);
-//                }
+                // Irá setar o departamento no spinner quando estiver editando o registro
+                if (allocationsItemParaEditar != null) {
+                    cursoSelecionado = allocationsItemParaEditar.getCourse();
+                    int cursoPosition = cursoArrayAdapter.getPosition(cursoSelecionado);
+                    binding.spinnerCurso.setSelection(cursoPosition, true);
+                }
             }
 
             @Override
@@ -178,6 +226,13 @@ public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
                 Toast.makeText(AddEditAlocacaoProfessorActivity.this, "onNothingSelected", Toast.LENGTH_LONG).show();
             }
         });
+
+        // Irá setar o departamento no spinner quando estiver editando um professor
+        if (allocationsItemParaEditar != null) {
+            diaDaSemanaSelecionado = DiasDaSemana.valueOf(allocationsItemParaEditar.getDayOfWeek());
+            int departamentoPosition = diasDaSemanaArrayAdapter.getPosition(diaDaSemanaSelecionado);
+            binding.spinnerDiaDaSemana.setSelection(departamentoPosition, true);
+        }
     }
 
     private void setupSpinnerListaProfessor() {
@@ -202,12 +257,12 @@ public class AddEditAlocacaoProfessorActivity extends AppCompatActivity {
             public void onResponse(List<Professor> response) {
                 professorArrayAdapter.addAll(response);
 
-                // Irá setar o departamento no spinner quando estiver editando um professor
-//                if (editarProfessor != null) {
-//                    departamentoSelecionado = editarProfessor.getDepartment();
-//                    int departamentoPosition = departamentoSpinner.getPosition(editarProfessor.getDepartment());
-//                    binding.spinnerCurso.setSelection(departamentoPosition, true);
-//                }
+                // Irá setar o departamento no spinner quando estiver editando o registro
+                if (allocationsItemParaEditar != null) {
+                    professorSelecionado = allocationsItemParaEditar.getProfessor();
+                    int professorPosition = professorArrayAdapter.getPosition(professorSelecionado);
+                    binding.spinnerProfessor.setSelection(professorPosition, true);
+                }
             }
 
             @Override
