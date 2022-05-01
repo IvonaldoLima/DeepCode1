@@ -13,11 +13,20 @@
         android:theme="@style/Theme.ProfessorAllocation"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.listar_professor.ListarProfessoresActivity"
+            android:name=".view.listar_alocacao_professor.ListarAlocacaoActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".view.alocar_professor.AddEditAlocacaoProfessorActivity"
             android:exported="false" />
         <activity
+            android:name=".view.listar_professor.ListarProfessoresActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".view.add_edit_professor.AddEditProfessorActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".view.listar_professor.ListarProfessoresActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

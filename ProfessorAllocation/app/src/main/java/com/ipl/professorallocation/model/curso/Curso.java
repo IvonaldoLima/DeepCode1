@@ -1,7 +1,8 @@
 package com.ipl.professorallocation.model.curso;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class Curso{
 
@@ -39,12 +40,7 @@ public class Curso{
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"Curso{" + 
-			"allocations = '" + allocations + '\'' + 
-			",name = '" + name + '\'' + 
-			",id = '" + id + '\'' + 
-			"}";
-		}
+ 	public String toString() {
+		return name;
+	}
 }

@@ -15,6 +15,7 @@ import com.ipl.professorallocation.data.service.RespositorioCallBack;
 import com.ipl.professorallocation.databinding.ActivityListarProfessoresBinding;
 import com.ipl.professorallocation.model.Professor;
 import com.ipl.professorallocation.view.add_edit_professor.AddEditProfessorActivity;
+import com.ipl.professorallocation.view.listar_professor.adapter.ListaProfessorAdapter;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class ListarProfessoresActivity extends AppCompatActivity {
         professorRepositorio = new ProfessorRepositorio();
         setupRecyclerView();
         setupOnCLickListener();
+        setTitle("Listar professor");
     }
 
     @Override

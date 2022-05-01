@@ -39,6 +39,7 @@ public class AddEditProfessorActivity extends AppCompatActivity {
         depatamentoRepositorio = new DepartamentoRepositorio();
         professorRepositorio = new ProfessorRepositorio();
         setupSpinnerListaDepartamentos();
+        setTitle("Adicionar professor");
         listarDepartamentos();
         carregarProfessorParaEditar();
         setupOnCLickListener();
@@ -98,6 +99,7 @@ public class AddEditProfessorActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         if (bundle != null) {
+            setTitle("Editar professor");
             Professor professor = (Professor) bundle.getSerializable(EXTRA_EDITAR_PROFESSOR);
             if (professor != null) {
                 editarProfessor = professor;

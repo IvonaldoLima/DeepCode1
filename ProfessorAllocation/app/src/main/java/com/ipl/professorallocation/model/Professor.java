@@ -1,8 +1,9 @@
 package com.ipl.professorallocation.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
-import com.google.gson.annotations.SerializedName;
 
 public class Professor implements Serializable {
 
@@ -62,14 +63,7 @@ public class Professor implements Serializable {
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"Professor{" + 
-			"allocations = '" + allocations + '\'' + 
-			",name = '" + name + '\'' + 
-			",cpf = '" + cpf + '\'' + 
-			",id = '" + id + '\'' + 
-			",department = '" + department + '\'' + 
-			"}";
-		}
+ 	public String toString() {
+		return name;
+	}
 }
